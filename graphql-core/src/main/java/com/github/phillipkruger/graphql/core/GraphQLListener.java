@@ -11,6 +11,10 @@ import javax.servlet.annotation.WebListener;
 import lombok.extern.java.Log;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
+/**
+ * Dynamically adding the Endpoint and Schema Servlets
+ * @author Phillip Kruger (phillip.kruger@redhat.com)
+ */
 @WebListener
 @Log
 public class GraphQLListener implements ServletContextListener {

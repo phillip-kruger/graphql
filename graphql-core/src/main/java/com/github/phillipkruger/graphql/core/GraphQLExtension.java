@@ -22,9 +22,9 @@ import javax.enterprise.context.spi.CreationalContext;
 import javax.enterprise.inject.spi.CDI;
 
 /**
- * This is a CDI extension that detects GraphQL components and generate a CDI
- * GraphQLConfig bean used by SchemaProducer.
- *
+ * This is a CDI extension that detects GraphQL components 
+ * and the GraphQL Schema
+ * 
  * @author Phillip Kruger (phillip.kruger@redhat.com)
  */
 @Log

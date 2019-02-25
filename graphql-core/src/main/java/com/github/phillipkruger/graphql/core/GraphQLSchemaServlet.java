@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 
 /**
- * To make the schema available
+ * To make the schema available over HTTP
  * @author Phillip Kruger (phillip.kruger@redhat.com)
  */
 @AllArgsConstructor
