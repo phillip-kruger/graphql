@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.github.phillip-kruger</groupId>
+        <artifactId>graphql</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+    
+    <name>GraphQL :: Core</name>
+    <description>Core part that can be shared between Wildfly and Thorntail</description>
+    
+    <groupId>com.github.phillip-kruger.graphql</groupId>
+    <artifactId>graphql-core</artifactId>
+    <packaging>jar</packaging>
+    
+    <properties>
+        <graphql-java.version>11.0</graphql-java.version>
+        <graphql-java-servlet.version>7.0.0</graphql-java-servlet.version>
+        <spqr.version>1.0.0-SNAPSHOT</spqr.version>
+    </properties>
+    
+    <dependencies>
+        <!-- MicroProfile (TODO: Change to the exact stuff we need ? CDI, JSON-P, Config) -->
+        <dependency>
+            <groupId>org.eclipse.microprofile</groupId>
+            <artifactId>microprofile</artifactId>
+            <type>pom</type>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Servlet from Java EE, used to expose graphql over HTTP -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        
+        <!-- The MicroProfile GraphQL API from Eclipse -->
+        <dependency>
+            <groupId>io.microprofile.sandbox</groupId>
+            <artifactId>microprofile-graphql-api</artifactId>
+        </dependency>
+        
+        <!-- The GraphQL Libraries we are wrapping for te implementation (TODO: Add excludes)-->
+        <dependency>
+            <groupId>io.leangen.graphql</groupId>
+            <artifactId>spqr</artifactId>
+            <version>${spqr.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-java</artifactId>
+            <version>${graphql-java.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.graphql-java-kickstart</groupId>
+            <artifactId>graphql-java-servlet</artifactId>
+            <version>${graphql-java-servlet.version}</version>
+        </dependency>
+            
+    </dependencies>
+    
+</project>
