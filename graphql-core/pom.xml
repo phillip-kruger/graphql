@@ -16,26 +16,45 @@
     <packaging>jar</packaging>
     
     <properties>
+        <microprofile-graphql-api.version>1.0.0-SNAPSHOT</microprofile-graphql-api.version>
+        <microprofile-cdi-api.version>2.0</microprofile-cdi-api.version>
+        <microprofile-config-api.version>1.3</microprofile-config-api.version>
+        
+        <servlet.version>4.0.1</servlet.version>
+        
         <graphql-java.version>11.0</graphql-java.version>
         <graphql-java-servlet.version>7.0.0</graphql-java-servlet.version>
         <spqr.version>1.0.0-SNAPSHOT</spqr.version>
     </properties>
     
     <dependencies>
-        <!-- MicroProfile (TODO: Change to the exact stuff we need ? CDI, JSON-P, Config) -->
+        <!-- MicroProfile apis -->
         <dependency>
-            <groupId>org.eclipse.microprofile</groupId>
-            <artifactId>microprofile</artifactId>
-            <type>pom</type>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <version>${microprofile-cdi-api.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.microprofile.config</groupId>
+            <artifactId>microprofile-config-api</artifactId>
+            <version>${microprofile-config-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- The API we implement -->
+        <dependency>
+            <groupId>io.microprofile.sandbox</groupId>
+            <artifactId>microprofile-graphql-api</artifactId>
+            <version>${microprofile-graphql-api.version}</version>
         </dependency>
         <!-- Servlet from Java EE, used to expose graphql over HTTP -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
+            <version>${servlet.version}</version>
             <scope>provided</scope>
         </dependency>
+        
         <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -43,13 +62,7 @@
             <scope>provided</scope>
         </dependency>
         
-        <!-- The MicroProfile GraphQL API from Eclipse -->
-        <dependency>
-            <groupId>io.microprofile.sandbox</groupId>
-            <artifactId>microprofile-graphql-api</artifactId>
-        </dependency>
-        
-        <!-- The GraphQL Libraries we are wrapping for te implementation (TODO: Add excludes)-->
+        <!-- The GraphQL Libraries we are wrapping for the implementation (TODO: Add excludes)-->
         <dependency>
             <groupId>io.leangen.graphql</groupId>
             <artifactId>spqr</artifactId>
