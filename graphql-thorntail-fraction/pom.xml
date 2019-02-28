@@ -51,12 +51,14 @@
         <dependency>
             <groupId>io.thorntail</groupId>
             <artifactId>undertow</artifactId>
+            <scope>provided</scope>
         </dependency>
         
         <!-- CDI -->
         <dependency>
             <groupId>io.thorntail</groupId>
             <artifactId>cdi</artifactId>
+            <scope>provided</scope>
         </dependency>
         
         <!-- The core GraphQL library -->
@@ -70,12 +72,14 @@
         <dependency>
             <groupId>io.thorntail</groupId>
             <artifactId>spi</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>io.thorntail</groupId>
             <artifactId>container</artifactId>
             <version>${version.thorntail}</version>
+            <scope>provided</scope>
         </dependency>
         
         <dependency>
