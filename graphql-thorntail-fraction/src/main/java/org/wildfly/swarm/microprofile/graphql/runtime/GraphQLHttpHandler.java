@@ -16,7 +16,6 @@
 
 package org.wildfly.swarm.microprofile.graphql.runtime;
 
-
 import io.undertow.server.HttpHandler;
 import io.undertow.server.HttpServerExchange;
 import io.undertow.util.Headers;
@@ -42,6 +41,7 @@ public class GraphQLHttpHandler implements HttpHandler {
     public void handleRequest(HttpServerExchange exchange) throws Exception {
         if (PATH.equalsIgnoreCase(exchange.getRequestPath())) {
             if (exchange.getRequestMethod().equals(Methods.GET)) {
+                // TODO: Get the content from /{context}/graphql (FW/Redirect?)
                 exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "application/json");
                 exchange.getResponseSender().send("{'hello':'world'}");
             } else {
