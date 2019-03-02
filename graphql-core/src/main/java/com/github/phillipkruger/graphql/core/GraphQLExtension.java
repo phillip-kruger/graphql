@@ -1,12 +1,31 @@
+/**
+ * Copyright 2019 Phillip Kruger
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.github.phillipkruger.graphql.core;
 
 import graphql.schema.GraphQLSchema;
 import io.leangen.graphql.GraphQLSchemaGenerator;
 import io.leangen.graphql.metadata.strategy.query.AnnotatedResolverBuilder;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import javax.enterprise.event.Observes;
 import javax.enterprise.inject.spi.AfterDeploymentValidation;
@@ -19,7 +38,11 @@ import org.eclipse.microprofile.graphql.Mutation;
 import org.eclipse.microprofile.graphql.Query;
 
 import javax.enterprise.context.spi.CreationalContext;
+import javax.enterprise.inject.spi.AfterBeanDiscovery;
 import javax.enterprise.inject.spi.CDI;
+import javax.enterprise.inject.spi.ProcessAnnotatedType;
+import javax.enterprise.inject.spi.WithAnnotations;
+import org.eclipse.microprofile.graphql.GraphQLApi;
 
 /**
  * This is a CDI extension that detects GraphQL components 
@@ -30,11 +53,11 @@ import javax.enterprise.inject.spi.CDI;
 @Log
 public class GraphQLExtension implements Extension {
 
-    private final List<Bean> graphQLComponents = new LinkedList<>();
+    private final List<Bean> graphQLComponents = new ArrayList<>();
     
     private GraphQLSchema schema;
     
-    private void registerGraphQLComponents(@Observes AfterDeploymentValidation abd, BeanManager beanManager) {
+    private void createGraphQLSchema(@Observes AfterDeploymentValidation abd, BeanManager beanManager) {
         GraphQLSchemaGenerator schemaGen = new GraphQLSchemaGenerator()
                 .withResolverBuilders(new AnnotatedResolverBuilder());
         
@@ -51,23 +74,13 @@ public class GraphQLExtension implements Extension {
         SchemaProducer schemaProducer = CDI.current().select(SchemaProducer.class).get();
         schemaProducer.setGraphQLSchema(schema);
         
-        log.info("All GraphQL Components loaded.");
-        
+        log.info("All GraphQL Components added to the endpoint.");    
     }
     
-    // Detect and store GraphQLcomponents
-    private <X> void detectGraphQLComponent(@Observes ProcessBean<X> event) {
-        if(!graphQLComponents.contains(event.getBean())){
-        
-            Method[] methods = event.getBean().getBeanClass().getMethods();
-            for(Method method:methods){
-                if(method.getAnnotationsByType(Query.class).length>0 ||
-                        method.getAnnotationsByType(Mutation.class).length>0){
-                    graphQLComponents.add(event.getBean());
-                    return;
-                }
-            }
+    // Detect and store GraphQLComponents
+    private <X> void detectGraphQLApiBeans(@Observes ProcessBean<X> event) {
+        if (event.getAnnotated().isAnnotationPresent(GraphQLApi.class)) {
+            graphQLComponents.add(event.getBean());
         }
-    }
-    
+    }   
 }
