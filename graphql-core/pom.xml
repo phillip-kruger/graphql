@@ -23,7 +23,7 @@
         <servlet.version>4.0.1</servlet.version>
         
         <graphql-java.version>11.0</graphql-java.version>
-        <graphql-java-servlet.version>7.0.0</graphql-java-servlet.version>
+        <graphql-java-servlet.version>6.2.0</graphql-java-servlet.version>
         <spqr.version>1.0.0-SNAPSHOT</spqr.version>
     </properties>
     
@@ -43,7 +43,7 @@
         </dependency>
         <!-- The API we implement -->
         <dependency>
-            <groupId>io.microprofile.sandbox</groupId>
+            <groupId>org.eclipse.microprofile.graphql</groupId>
             <artifactId>microprofile-graphql-api</artifactId>
             <version>${microprofile-graphql-api.version}</version>
         </dependency>
@@ -85,7 +85,7 @@
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>java-dataloader</artifactId>
-            <version>2.1.1</version>
+            <version>2.2.1</version>
         </dependency>
         <dependency>
             <groupId>org.antlr</groupId>

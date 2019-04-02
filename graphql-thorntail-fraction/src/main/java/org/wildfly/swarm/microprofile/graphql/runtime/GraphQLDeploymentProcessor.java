@@ -58,14 +58,14 @@ public class GraphQLDeploymentProcessor implements DeploymentProcessor {
             // TODO: Not sure why I need to do this ...
             WARArchive warArchive = archive.as(WARArchive.class)
                 .addDependency("com.graphql-java:graphql-java:11.0")
-                .addDependency("com.graphql-java-kickstart:graphql-java-servlet:7.0.0")
+                .addDependency("com.graphql-java-kickstart:graphql-java-servlet:6.2.0")
                 .addDependency("io.leangen.graphql:spqr:1.0.0-SNAPSHOT")
                 .addDependency("com.github.phillip-kruger.graphql:graphql-core:1.0.0-SNAPSHOT")
                 .addDependency("io.microprofile.sandbox:microprofile-graphql-api:1.0.0-SNAPSHOT")
                 .addDependency("io.github.classgraph:classgraph:4.6.7")
                 .addDependency("io.leangen.geantyref:geantyref:1.3.6")
                 .addDependency("org.reactivestreams:reactive-streams:1.0.2")
-                .addDependency("com.graphql-java:java-dataloader:2.1.1")
+                .addDependency("com.graphql-java:java-dataloader:2.2.1")
                 .addDependency("org.antlr:antlr4-runtime:4.7.1");
             
 //            .addAllDependencies(); // TODO: Why is this not working ? 

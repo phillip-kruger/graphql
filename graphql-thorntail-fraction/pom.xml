@@ -17,8 +17,8 @@
     <packaging>jar</packaging>
     
     <properties>
-        <version.thorntail>2.3.0.Final</version.thorntail>
-        <version.thorntail.fraction-plugin>93</version.thorntail.fraction-plugin>
+        <version.thorntail>2.4.0.Final</version.thorntail>
+        <version.thorntail.fraction-plugin>94</version.thorntail.fraction-plugin>
         
         <thorntail.fraction.stability>unstable</thorntail.fraction.stability>
         <thorntail.fraction.tags>Microprofile,GraphQL.Web</thorntail.fraction.tags>
@@ -98,7 +98,7 @@
         <dependency>
             <groupId>org.wildfly</groupId>
             <artifactId>wildfly-servlet-feature-pack</artifactId>
-            <version>15.0.1.Final</version>
+            <version>16.0.0.Final</version>
             <type>zip</type>
             <scope>provided</scope>
             <exclusions>
@@ -111,7 +111,7 @@
         <dependency>
             <groupId>org.wildfly</groupId>
             <artifactId>wildfly-feature-pack</artifactId>
-            <version>15.0.1.Final</version>
+            <version>16.0.0.Final</version>
             <type>zip</type>
             <scope>provided</scope>
             <exclusions>
