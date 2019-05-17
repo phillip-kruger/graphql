@@ -61,7 +61,7 @@ public class GraphQLDeploymentProcessor implements DeploymentProcessor {
                 .addDependency("com.graphql-java-kickstart:graphql-java-servlet:6.2.0")
                 .addDependency("io.leangen.graphql:spqr:1.0.0-SNAPSHOT")
                 .addDependency("com.github.phillip-kruger.graphql:graphql-core:1.0.0-SNAPSHOT")
-                .addDependency("io.microprofile.sandbox:microprofile-graphql-api:1.0.0-SNAPSHOT")
+                .addDependency("org.eclipse.microprofile.graphql:microprofile-graphql-api:1.0.0-SNAPSHOT")
                 .addDependency("io.github.classgraph:classgraph:4.6.7")
                 .addDependency("io.leangen.geantyref:geantyref:1.3.6")
                 .addDependency("org.reactivestreams:reactive-streams:1.0.2")
